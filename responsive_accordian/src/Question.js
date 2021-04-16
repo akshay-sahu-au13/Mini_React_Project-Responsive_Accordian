@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
-import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
-const Question = ()=> {
-
+const Question = ({title, info})=> {
+    const [showInfo, setShowInfo] = useState(false);
     return <> 
-        <article className="item">
-        <h4></h4>
+        <article className="question">
+        <header>
+            <h4>{title}</h4>
+                <button className="btn" onClick={() => setShowInfo(!showInfo)}>{showInfo ? <AiOutlineMinus /> : <AiOutlinePlus />}</button>
+        </header>
 
+            {showInfo && <p>{info}</p>}
         </article>
     </>
 }
